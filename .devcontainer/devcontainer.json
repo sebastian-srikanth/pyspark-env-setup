@@ -1,0 +1,51 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.140.1/containers/docker-existing-dockerfile
+{
+	"name": "Sebastian Dockerfile",
+
+	// Sets the run context to one level up instead of the .devcontainer folder.
+	"context": "..",
+
+	// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+	"dockerFile": "../Dockerfile",
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": { 
+		"terminal.integrated.shell.linux": null
+	},
+
+	/* Add the containerEnv property to devcontainer.json to set variables that should apply
+	to the entire container or remoteEnv to set variables for VS Code 
+	and related sub-processes (terminals, tasks, debugging, etc) */
+	"remoteEnv": {
+		"WORKSPACE": "${containerWorkspaceFolder}",
+		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
+		"PYTHONPATH": "/workspaces/test_project:${containerEnv:SPARK_HOME}/python/lib/py4j-0.10.7-src.zip:${containerEnv:SPARK_HOME}/python/",
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"dongli.python-preview",
+		"frhtylcn.pythonsnippets",
+		"njpwerner.autodocstring",
+		"ms-python.python",
+		"ms-azuretools.vscode-docker",
+		"RandomFractalsInc.vscode-data-preview",
+		"msrvida.vscode-sanddance"
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [3030],
+
+	// Uncomment the next line to run commands after the container is created - for example installing curl.
+	// "postCreateCommand": "apt-get update && apt-get install -y curl",
+
+	// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
+	// "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+
+	// Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
+	"mounts": [ "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" ],
+
+	// Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
+	// "remoteUser": "vscode"
+}
