@@ -1,5 +1,5 @@
 # set base image OS (CentOS is a Linux distribution that provides a free, community-supported computing platform)
-FROM centos
+FROM centos:7
 
 # Every command below happens within the container
 
@@ -19,8 +19,10 @@ LABEL maintainer = "Sebastian Srikanth Kumar<sebastiansrikanth94@gmail.com>"
 
     # The java-1.8.0-openjdk package contains just the Java Runtime Environment. 
     # If you want to develop Java programs then install the java-1.8.0-openjdk-devel package.
-RUN dnf install -y python3-pip
+RUN yum update -y
+RUN yum install -y python3-pip
 RUN yum install -y python3 java-1.8.0-openjdk java-1.8.0-openjdk-devel tar git wget zip
+RUN yum install -y python3-devel
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # Import Spark archive file from AWS S3 PUBLIC bucket                                        # 
@@ -50,3 +52,4 @@ RUN pip3 install -r requirements.txt
 # Clean cache inside container
 RUN yum clean all
 RUN rm -rf /var/cache/yum
+

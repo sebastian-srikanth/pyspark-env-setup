@@ -11,7 +11,8 @@
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": { 
-		"terminal.integrated.shell.linux": null
+		"terminal.integrated.shell.linux": null,
+		"python.pythonPath": "/usr/bin/python3"
 	},
 
 	/* Add the containerEnv property to devcontainer.json to set variables that should apply
