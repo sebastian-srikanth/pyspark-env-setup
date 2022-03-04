@@ -24,3 +24,6 @@ print(sc.parallelize([1,2,3,4,5]).foreach(printAll))
 # When do we use foreach and map
 # foreach is a action but always return NONE/Undefined datatype -> example: running a command to save to database
 # map is afunction that returns the transformed RDD after applying the actions defined in map function
+
+# GLOM
+# we can partition the rdd into tuples
